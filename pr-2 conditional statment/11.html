@@ -1,0 +1,22 @@
+<!-- 11. Write a JavaScript program to create basic calculator using ladder if else. -->
+
+<script type="text/javascript">
+    var a = parseInt(prompt(`Enter first number :-`));
+    var b = parseInt(prompt(`Enter second number :-`));
+    var operator = prompt(`Enter operator (+,-,*,/):-`);
+    if (operator == "+") {
+        document.write(`<h1>${a + b}</h1>`);
+    } else if (operator == "-") {
+        document.write(`<h1>${a - b}</h1>`);
+    } else if (operator == "*") {
+        document.write(`<h1>${a * b}</h1>`);
+    } else if (operator == "/") {
+        if (b != 0) {
+            document.write(`<h1>${a / b}</h1>`);
+        } else {
+            document.write(`<h1>Can't divide by zero</h1>`);
+        }
+    } else {
+        document.write(`<h1>Invalid operator</h1>`);
+    }
+</script>
