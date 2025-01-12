@@ -1,0 +1,19 @@
+<script type="text/javascript">
+   let no = 155, r, rev = 0, org;
+
+// Store the original number
+org = no;
+
+while (no != 0) {
+    r = no % 10;
+    rev = rev * 10 + r;
+    no = Math.floor(no / 10);
+}
+
+if (rev == org) {
+    document.write("The number is a palindrome");
+} else {
+    document.write("The number is not a palindrome");
+}
+
+</script>
