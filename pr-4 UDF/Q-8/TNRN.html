@@ -1,0 +1,15 @@
+<!-- 9.Write a JavaScript   program to input angles of a triangle and check whether triangle is valid or not.(using all function) -->
+<script type="text/javascript">
+    const num = () => {
+        //    TNRN (Take Nothing Return Nothing)
+        let angle1 = parseInt(prompt("Enter first angle of the triangle:"));
+        let angle2 = parseInt(prompt("Enter second angle of the triangle:"));
+        let angle3 = parseInt(prompt("Enter third angle of the triangle:"));
+        if (angle1 + angle2 + angle3 == 180) {
+          document.write(`Tringle is valid`)
+        } else {
+            document.write(`Tringle not is valid`)
+        }
+    }
+    num();
+</script>

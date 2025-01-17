@@ -1,0 +1,19 @@
+<!-- 10.Write a JavaScript program to decide that you eligible for voting? (using all function) -->
+<div>
+    <h2 id="result"></h2>
+</div>
+
+<script type="text/javascript">
+    // TSRS (Take Something Return Something)
+    const max = (res) => {
+        let age = parseInt(prompt("Enter your age:"));
+        if (age >= 18) {
+            res(" eligible for voting.");
+        } else {
+            res("not eligible for voting.");
+        }
+    }
+    max((result) => {
+        document.getElementById("result").innerHTML = result;
+    });
+</script>

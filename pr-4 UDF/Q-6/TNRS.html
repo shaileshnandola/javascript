@@ -1,0 +1,16 @@
+<!-- 6.Write a javascript Program to perform a swapping of two variables.(all function use) -->
+<script type="text/javascript">
+    //    TNRS (Take Nothing Return Something)
+
+    const num = () => {
+        let a = parseInt(prompt(`Enter a number`))
+        let b = parseInt(prompt(`Enter a number`))
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        
+        return [a, b];
+    }
+    document.write(`${num()}`);
+</script>

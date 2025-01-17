@@ -1,0 +1,21 @@
+<!-- 3.Write a JavaScript program to find which number is greter in 4 numbers using nested if else. (using simple function) -->
+<script type="text/javascript">
+      //    TNRS (Take Nothing Return Something)
+    const num = () => {
+        let a = parseInt(prompt("Enter a number:"));
+        let b = parseInt(prompt("Enter b number:"));
+        let c = parseInt(prompt("Enter c number:"));
+        let d = parseInt(prompt("Enter d number:"));
+
+        if (a >= b && a >= c && a >= d) {
+            return "a is greater";
+        } else if (b >= a && b >= c && b >= d) {
+            return "b is greater";
+        } else if (c >= a && c >= b && c >= d) {
+            return "c is greater";
+        } else {
+            return "d is greater";
+        }
+    }
+    document.write(`${num()}`);
+</script>

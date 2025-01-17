@@ -1,0 +1,48 @@
+<!-- 8. Write a JavaScript program to create basic calculator using switch case. (simple function use)Ex. User input a,b and select choice + , - , * , / 
+a=10
+b=5
+select choice + , - , * , /
++
+Ans = 15
+-
+Ans = 5;
+*
+Ans = 50
+/
+Ans = 2 -->
+<script type="text/javascript">
+    //    TNRS (Take Nothing Return Something)
+
+    const num = () => {
+        let a = parseInt(prompt(`Enter a number`))
+        let b = parseInt(prompt(`Enter a number`))
+        let operation = prompt("Select operation (+, -, *, /):");
+
+        let result;
+        switch (operation) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                if (b != 0) {
+                    result = a / b;
+                    break;
+                }
+                else {
+                    result = "Error! Division by zero is not allowed.";
+                    break;
+                }
+        }
+        return result;
+    }
+    document.write(`${num()}`);
+
+
+
+</script>

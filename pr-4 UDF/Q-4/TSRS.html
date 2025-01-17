@@ -1,0 +1,24 @@
+<!-- 4.Write a JavaScript program to find which number is greter in 4 numbers using ledder if else. (using no return with parameter function)
+  -->
+<script type="text/javascript">
+    // TSRS (Take Something Return Something)
+    const max = (num) => {
+        let a = parseInt(prompt(`Enter a number`))
+        let b = parseInt(prompt(`Enter b number`))
+        let c = parseInt(prompt(`Enter c number`))
+        let d = parseInt(prompt(`Enter d number`))
+        if (a > b && a > c && a > d) {
+            return a;
+        }
+        else if (b > a && b > c && b > d) {
+            return b;
+        }
+        else if (c > a && c > b && c > d) {
+            return c;
+        }
+        else {
+            return d;
+        }
+    }
+    document.write(max());
+</script>

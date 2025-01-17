@@ -1,0 +1,23 @@
+<!-- 9.Write a JavaScript   program to input angles of a triangle and check whether triangle is valid or not.(using all function) -->
+<div>
+    <h2 id="result"></h2>
+</div>
+
+<script type="text/javascript">
+    // TSRS (Take Something Return Something)
+    const max = (res) => {
+        let angle1 = parseInt(prompt("Enter first angle of the triangle:"));
+        let angle2 = parseInt(prompt("Enter second angle of the triangle:"));
+        let angle3 = parseInt(prompt("Enter third angle of the triangle:"));
+
+        if (angle1 + angle2 + angle3 === 180 && angle1 > 0 && angle2 > 0 && angle3 > 0) {
+            res("The triangle is valid!");
+        } else {
+            res("The triangle is not valid.");
+        }
+    }
+
+    max((result) => {
+        document.getElementById("result").innerHTML = result;
+    });
+</script>
