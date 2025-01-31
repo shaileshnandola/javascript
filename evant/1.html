@@ -1,0 +1,15 @@
+<h2 id="ans"></h2>
+
+<input type="text" id="input" onkeyup="save()">
+<button id="btn" onclick="save()">Click</button>
+
+<script type="text/javascript">
+    let cnt = 0; 
+
+    function save() {
+        let save = document.getElementById("input").value;
+        document.getElementById("ans").innerHTML = save;
+        cnt++; 
+        document.getElementById("ans").innerHTML = cnt;
+    }
+</script>

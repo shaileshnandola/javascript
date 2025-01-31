@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="box">
+        <table align="center" border="1">
+            <tr>
+                <td>no1 :</td>
+                <td><input type="number" id="no1"></td>
+            </tr>
+
+            <tr>
+                <td>no2 :</td>
+                <td><input type="number" id="no2"></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" value="sum" onkeyup="add()">
+                </td>
+            </tr>
+        </table>
+        <h1 id="ans"></h1>
+    </div>
+    <script type="text/javascript">
+        function add() {
+            var no1 = document.getElementById("no1").value;
+            var no2 = document.getElementById("no2").value;
+            var ans = parseInt(no1) + parseInt(no2);
+
+            document.getElementById("ans").innerHTML = `ANS: ${ans}`;
+
+            document.getElementById("no1").value = "";
+            document.getElementById("no2").value = "";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<h2 align="center">View User</h2>
+
+<button id="data" onclick="save()">data</button>
+
+<table border="1" align="center">
+    <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>city</th>
+        <th>address</th>
+        <th>phone</th>
+        <th>course</th>
+        
+
+    </thead>
+    <tbody id="recode">
+
+    </tbody>
+
+</table>
+
+
+<script type="text/javascript">
+    // let obj = {
+    //     name: "shailesh nandola",
+    //     age: 22,
+    //     email: "shailesh123@gmail.com",
+    //     address: {
+    //         contery: "india",
+    //         state: "gujrat",
+    //         city: {
+    //             surat: "umra"
+    //         },
+    //         pincode: "395006"
+    //     },
+    //     hobbies: ["criket", "football", "kabbady"]
+    // }
+    // document.getElementById("name").innerHTML = `Name:-${obj?.name}`
+    // document.getElementById("age").innerHTML = `Age:-${obj?.age}`
+    // document.getElementById("addresh").innerHTML = `Addresh:-${obj?.address?.city?.surat}`
+    // document.getElementById("email").innerHTML = `Email:-${obj?.email}`
+    // document.getElementById("hobby").innerHTML = `Hobby:-${obj?.hobbies}`
+
+    let details = [
+        {
+            id: 1,
+            name: "jay",
+            email: "jay@gmail.com",
+            city: "surat",
+            address: "umra",
+            phone: "1234567890",
+            course: ["html,css,js"]
+        },
+        {
+            id: 2,
+            name: "ajay",
+            email: "ajay@gmail.com",
+            city: "vapi",
+            address: "conna",
+            phone: "1234567890",
+            course: ["js,react js,nodejs"]
+        },
+        {
+            id: 2,
+            name: "vajay",
+            email: "vajay@gmail.com",
+            city: "mumbai",
+            address: "dola",
+            phone: "1234567890",
+            course: ["bootstrap,c,c++"]
+        }
+    ]
+
+    let tbl = "";
+    details.map((val) => {
+        tbl += `
+        <tr>
+            <td>${val.id}</td>
+            <td>${val.name}</td>
+            <td>${val.email}</td>
+            <td>${val.city}</td>
+            <td>${val.address}</td>
+            <td>${val.phone}</td>
+            <td>${val.course}</td>
+        </tr>`
+    });
+    document.getElementById('recode').innerHTML = tbl;
+
+
+
+</script>

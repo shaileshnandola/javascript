@@ -1,0 +1,18 @@
+<!-- 9. search array element using for loop. -->
+<script type="text/javascript">
+    let arr = [10, 20, 30, 40, 50];
+    let searchElement = 30;
+
+    let found = false;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === searchElement) {
+            console.log(searchElement);
+            found = true;
+            break;
+            
+        }
+    }
+    if (!found) {
+        console.log(`Element ${searchElement} not found in the array.`);
+    }
+</script>

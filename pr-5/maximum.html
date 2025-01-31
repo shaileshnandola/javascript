@@ -1,0 +1,16 @@
+<!-- 2. find maximum number in array. -->
+<script type="text/javascript">
+    function Max(arr) {
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    let arr = [10, 2, 40, 5];
+    console.log(Max(arr)); 
+
+</script>

@@ -1,0 +1,22 @@
+<div class="box"></div>
+<button id="btn" onclick="save()">Click</button>
+<button id="btn1" onclick="show()">show</button>
+
+<script>
+    function save() {
+        let box = document.querySelector('.box');
+        box.style.height = "200px";
+        box.style.width = "200px";
+        box.style.background = "teal";
+
+        let btn = document.querySelector('#btn');
+        btn.style.display = "none";
+    }
+
+       function show(){
+
+        let btn1 = document.querySelector('#btn');
+        btn.style.display = "block";
+
+    }
+</script>
