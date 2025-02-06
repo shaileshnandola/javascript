@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: linear-gradient(120deg, #7ce25d, #d88771);
+        color: black;
+        font-family: 'Poppins', sans-serif;
+        min-height: 100vh;
+    }
+
+    table {
+        color: black;
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px auto;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+        background-color: aliceblue;
+        color: black;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #cc0000;
+    }
+</style>
+
+<body>
+    <div align="center">
+        <h2>Todo List</h2>
+        <table border="1">
+            <tr>
+                <td>Add Task: </td>
+                <td><input type="text" id="task"></td>
+            </tr>
+        </table>
+        <button style="background-color:blueviolet;color: aliceblue; padding: 10px; width: 100px;"
+            onclick="addTask()">submit</button>
+        <h2>View Task</h2>
+        <table border="1">
+            <thead>
+                <th>Id</th>
+                <th>Task</th>
+                <th>Action</th>
+            </thead>
+            <tbody id="todolist"></tbody>
+        </table>
+    </div>
+</body>
+
+<script type="text/javascript">
+    let record = [];
+
+    const viewTask = () => {
+        let tbl = "";
+        record.map((val, index) => {
+            tbl += `
+                <tr>
+                    <td>${val.taskid}</td>
+                    <td>${val.taskname}</td>
+                    <td><button onclick="deleteTask(${val.taskid})">Delete</button></td>
+                </tr>
+            `;
+        });
+        document.getElementById('todolist').innerHTML = tbl;
+    };
+
+    const addTask = () => {
+        let task = document.getElementById('task').value.trim();
+
+        if (task === "") {
+
+            alert("Please enter a task.");
+            return;
+        }
+
+        let dup = record.filter((val) => {
+            return val.taskname === task;
+        });
+
+        if (dup.length === 1) {
+            alert("Task already exists.");
+            document.getElementById('task').value = "";
+            return false;
+        }
+
+        let obj = {
+            taskid: parseInt(Math.random() * 1000000),
+            taskname: task
+        };
+
+        record.push(obj);
+        document.getElementById('task').value = "";
+        alert("Task successfully added.");
+        viewTask();
+    };
+
+    const deleteTask = (taskid) => {
+        record = record.filter(task => task.taskid !== taskid);
+        viewTask();
+    };
+    viewTask();
+</script>
+
+</html>

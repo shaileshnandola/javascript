@@ -1,0 +1,20 @@
+<h1 id="ans"></h1>
+<script type="text/javascript">
+
+    try {
+
+        var a = parseInt(prompt(`Enter any number`));
+        var b = parseInt(prompt(`Enter any number`));
+
+        if (b == 0) {
+            throw (`can not divide by zero`);
+        } else {
+            let ans = a / b;
+            document.getElementById(`ans`).innerHTML = ans;
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
+</script>
+

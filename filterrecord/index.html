@@ -6,27 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        color: #333;
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="button"] {
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    input[type="button"] {
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+
+    button {
+        background-color: #333;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+        margin: 10px;
+        width: 100px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 70%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #333;
+        color: white;
+    }
+
+    tr:hover {
+        background-color: #ccc;
+    }
+</style>
 
 <body>
     <div align="center">
-        <h1>Filter Record</h1>
+        <h1>Filter Data Record</h1>
 
         <input type="text" id="city"><button onclick="cityFun()">City</button>
+        <br><br>
+        <input type="text" id="hobby"><button onclick="hobbyFun()">Hobies</button>
+        <br><br>
+        <input type="text" id="desi"><button onclick="desiFun()">Designation</button>
+        <br><br>
         <input type="button" value="reset" onclick="reset()">
         <input type="button" value="print" onclick="print()">
-        
-
+        <br><br>
+        <input type="text" id="minsalary">to <input type="text" id="maxsalary"><button
+            onclick="salaryFun()">salary</button>
         <br><br>
         <table border="1">
             <tr>
-                <td>Id</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Gender</td>
-                <td>Hobby</td>
-                <td>City</td>
-                <td>salary</td>
-                <td>Designation</td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hobby</th>
+                <th>City</th>
+                <th>salary</th>
+                <th>Designation</th>
             </tr>
             <tbody id="record">
 
@@ -38,3 +116,257 @@
 <script src="./index.js" type="text/javascript"></script>
 
 </html>
+<script>
+    const records = [
+        {
+            id: 1, name: "John", email: "johan@gmail.com", gender: "male", hobby: ["cricket", "reading"], city: "surat", salary: 5000, designation: "junior"
+        },
+        {
+            id: 2, name: "Rahul", email: "rahul@gmail.com", gender: "male", hobby: ["football", "reading"], city: "mumbai", salary: 6000, designation: "senior"
+        },
+        {
+            id: 3, name: "Rohan", email: "rohan@gmail.com", gender: "male", hobby: ["cricket", "reading"], city: "pune", salary: 7000, designation: "senior"
+        },
+        {
+            id: 4, name: "Ajay", email: "ajay@gmail.com", gender: "male", hobby: ["travelling", "reels"], city: "delhi", salary: 8000, designation: "junior"
+        },
+        {
+            id: 5, name: "Rasik", email: "rasik@gmail.com", gender: "male", hobby: ["volleyball", "music"], city: "ahmedabad", salary: 9000, designation: "senior"
+        },
+        {
+            id: 6, name: "Vishal", email: "vishal@gmail.com", gender: "male", hobby: ["cricket", "photography"], city: "bangalore", salary: 6000, designation: "junior"
+        },
+        {
+            id: 7, name: "Sandeep", email: "sandeep@gmail.com", gender: "male", hobby: ["music", "travelling"], city: "kolkata", salary: 5000, designation: "junior"
+        },
+        {
+            id: 8, name: "Sahil", email: "sahil@gmail.com", gender: "male", hobby: ["reading", "cooking"], city: "chennai", salary: 15500, designation: "senior"
+        },
+        {
+            id: 9, name: "Amit", email: "amit@gmail.com", gender: "male", hobby: ["football", "gaming"], city: "delhi", salary: 6500, designation: "junior"
+        },
+        {
+            id: 10, name: "Manish", email: "manish@gmail.com", gender: "male", hobby: ["cricket", "reading"], city: "lucknow", salary: 77000, designation: "senior"
+        },
+        {
+            id: 11, name: "Kunal", email: "kunal@gmail.com", gender: "male", hobby: ["music", "gaming"], city: "hyderabad", salary: 25000, designation: "senior"
+        },
+        {
+            id: 12, name: "Praveen", email: "praveen@gmail.com", gender: "male", hobby: ["sports", "reading"], city: "jaipur", salary: 20000, designation: "junior"
+        },
+        {
+            id: 13, name: "Nikhil", email: "nikhil@gmail.com", gender: "male", hobby: ["volleyball", "movies"], city: "indore", salary: 21000, designation: "junior"
+        },
+        {
+            id: 14, name: "Ravi", email: "ravi@gmail.com", gender: "male", hobby: ["travelling", "music"], city: "pune", salary: 35000, designation: "senior"
+        },
+        {
+            id: 15, name: "Arvind", email: "arvind@gmail.com", gender: "male", hobby: ["cricket", "painting"], city: "surat", salary: 12000, designation: "junior"
+        },
+        {
+            id: 16, name: "Kartik", email: "kartik@gmail.com", gender: "male", hobby: ["music", "cricket"], city: "mumbai", salary: 15000, designation: "senior"
+        },
+        {
+            id: 17, name: "Deepak", email: "deepak@gmail.com", gender: "male", hobby: ["football", "photography"], city: "ahmedabad", salary: 10000, designation: "senior"
+        },
+        {
+            id: 18, name: "Vikram", email: "vikram@gmail.com", gender: "male", hobby: ["reading", "movies"], city: "chennai", salary: 55000, designation: "junior"
+        },
+        {
+            id: 19, name: "Suresh", email: "suresh@gmail.com", gender: "male", hobby: ["cricket", "travelling"], city: "mumbai", salary: 45000, designation: "junior"
+        },
+        {
+            id: 20, name: "Tejas", email: "tejas@gmail.com", gender: "male", hobby: ["reading", "cooking"], city: "delhi", salary: 70000, designation: "junior"
+        },
+    ];
+
+
+    const viewRecord = () => {
+        let tbl = "";
+        records.map((val) => {
+            tbl += `
+                    <tr>
+                        <td>${val?.id}</td>
+                        <td>${val?.name}</td>
+                        <td>${val?.email}</td>
+                        <td>${val?.gender}</td>
+                        <td>${val?.hobby}</td>
+                        <td>${val?.city}</td>
+                        <td>${val?.salary}</td>
+                        <td>${val?.designation}</td>
+                    </tr>
+                `
+        })
+        document.getElementById('record').innerHTML = tbl;
+
+    }
+    viewRecord();
+    const cityFun = () => {
+        let city = document.querySelector('#city').value;
+        let cityRecords = records.filter((val) => val.city === city);
+        let err = "";
+        if (cityRecords.length == 0) {
+            err += `<h1>Record not found</h1>`
+            document.getElementById('error').innerHTML = err;
+        }
+        document.getElementById('city').value = "";
+        let tbl = "";
+        cityRecords.map((val) => {
+            tbl += `
+                    <tr>
+                        <td>${val?.id}</td>
+                        <td>${val?.name}</td>
+                        <td>${val?.email}</td>
+                        <td>${val?.gender}</td>
+                        <td>${val?.hobby}</td>
+                        <td>${val?.city}</td>
+                        <td>${val?.salary}</td>
+                        <td>${val?.designation}</td>
+                    </tr>
+                `
+        })
+        document.getElementById('record').innerHTML = tbl;
+
+
+    }
+    const salaryFun = () => {
+        let minsalary = parseInt(document.querySelector('#minsalary').value);
+        let maxsalary = parseInt(document.querySelector('#maxsalary').value);
+        let salaryRecords = records.filter((val) => val.salary >= minsalary && val.salary <= maxsalary);
+        let err = "";
+
+        if (salaryRecords.length == 0) {
+            err += `<h1>Record not found</h1>`;
+            document.getElementById('error').innerHTML = err;
+        } else {
+            document.getElementById('error').innerHTML = '';
+        }
+
+        document.getElementById('minsalary').value = "";
+
+        let tbl = "";
+        salaryRecords.map((val) => {
+            tbl += `
+                    <tr>
+                        <td>${val?.id}</td>
+                        <td>${val?.name}</td>
+                        <td>${val?.email}</td>
+                        <td>${val?.gender}</td>
+                        <td>${val?.hobby}</td>
+                        <td>${val?.city}</td>
+                        <td>${val?.salary}</td>
+                        <td>${val?.designation}</td>
+                    </tr>
+                `;
+        });
+        document.getElementById('record').innerHTML = tbl;
+    };
+
+    const salFun = () => {
+        let maxsalary = parseInt(document.querySelector('#maxsalary').value);
+        let salRecords = records.filter((val) => val.salary <= maxsalary);
+        let err = "";
+
+        if (salRecords.length == 0) {
+            err += `<h1>Record not found</h1>`;
+            document.getElementById('error').innerHTML = err;
+        } else {
+            document.getElementById('error').innerHTML = '';
+        }
+
+        document.getElementById('maxsalary').value = "";
+
+        let tbl = "";
+        salRecords.map((val) => {
+            tbl += `
+                    <tr>
+                        <td>${val?.id}</td>
+                        <td>${val?.name}</td>
+                        <td>${val?.email}</td>
+                        <td>${val?.gender}</td>
+                        <td>${val?.hobby}</td>
+                        <td>${val?.city}</td>
+                        <td>${val?.salary}</td>
+                        <td>${val?.designation}</td>
+                    </tr>
+                `;
+        });
+        document.getElementById('record').innerHTML = tbl;
+    };
+
+    const hobbyFun = () => {
+        let hobby = document.querySelector('#hobby').value;
+        let hobbyRecords = records.filter((val) => val.hobby.includes(hobby));
+        let err = "";
+
+        if (hobbyRecords.length == 0) {
+            err += `<h1>Record not found</h1>`;
+            document.getElementById('error').innerHTML = err;
+
+        } else {
+            document.getElementById('error').innerHTML = "";
+        }
+
+        document.getElementById('hobby').value = "";
+
+        let tbl = "";
+        hobbyRecords.forEach((val) => {
+            tbl += `
+            <tr>
+                <td>${val?.id}</td>
+                <td>${val?.name}</td>
+                <td>${val?.email}</td>
+                <td>${val?.gender}</td>
+                <td>${val?.hobby}</td>
+                <td>${val?.city}</td>
+                <td>${val?.salary}</td>
+                <td>${val?.designation}</td>
+            </tr>
+        `;
+        });
+
+        document.getElementById('record').innerHTML = tbl;
+    }
+    const desiFun = () => {
+        let desi = document.querySelector('#desi').value;
+        let desiRecords = records.filter((val) => val.designation === desi);
+        let err = "";
+
+        if (desiRecords.length == 0) {
+            err += `<h1>Record not found</h1>`;
+            document.getElementById('error').innerHTML = err;
+        } else {
+            document.getElementById('error').innerHTML = "";
+        }
+
+        document.getElementById('desi').value = "";
+
+        let tbl = "";
+        desiRecords.forEach((val) => {
+            tbl += `
+        <tr>
+            <td>${val?.id}</td>
+            <td>${val?.name}</td>
+            <td>${val?.email}</td>
+            <td>${val?.gender}</td>
+            <td>${val?.hobby}</td>
+            <td>${val?.city}</td>
+            <td>${val?.salary}</td>
+            <td>${val?.designation}</td>
+        </tr>
+    `;
+        });
+
+        document.getElementById('record').innerHTML = tbl;
+    }
+
+    const reset = () => {
+        viewRecord();
+        document.getElementById('error').innerHTML = "";
+
+    }
+    const print = () => {
+        viewRecord();
+        window.print();
+    }
+</script>
