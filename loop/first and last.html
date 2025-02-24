@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    let no = 4561;
+    let firstdigit = 0;
+    let lastdigit = 0;
+    let sum = 0;
+
+    
+    lastdigit = no % 10;
+
+
+    while (no >= 10) {
+        no = Math.floor(no / 10);
+    }
+    firstdigit = no;
+
+    // Calculate the sum of the first and last digits
+    sum = firstdigit + lastdigit;
+
+    console.log("First digit:", firstdigit);
+    console.log("Last digit:", lastdigit);
+    console.log("Sum of first and last digits:", sum);
+</script>
