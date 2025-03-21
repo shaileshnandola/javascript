@@ -1,0 +1,87 @@
+body{
+    background: url(https://img.pikbest.com/wp/202345/wallpaper-hd-landscape-wallpapers-free-download-png_9591924.jpg!sw800);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 400px;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: inset -5px -5px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+.form h1{
+    color: white;
+    font-size: 2rem;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.5);
+    margin: 50px;
+}
+.box{
+    padding: 12px;
+    margin: 20px;
+    width: 65%;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background-color:rgba(0, 0, 0, 0.5) ;
+    box-shadow: inset -3px -3px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1rem;
+}
+#submit{
+    padding: 10px 20px;
+    margin-top: 50px;
+    width: 50%;
+    background-color:rgba(0, 0, 0, 0.5) ;
+    box-shadow: inset -3px -3px rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 20px;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+#submit:hover{
+    cursor: pointer;
+    background-color:rgba(255, 255, 255, 0.1) ;
+    color: white;
+}
+::placeholder{
+    color: white;
+    opacity: 0.7;
+}
+.registration-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    margin-top: 10px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}

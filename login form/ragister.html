@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=f, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="" class="form" style="height: 600px;">
+        <h1>Register Here</h1>
+        <input type="text" name="username" class="box" placeholder="Enter username" required>
+        <input type="email" name="email" class="box" placeholder="Enter Email" required>
+        <input type="password" name="password" class="box" placeholder="Enter password" required>
+        <input type="password" class="box" name="confirm-password" placeholder="Confirm password" required>
+        <!-- "Register" button redirects to the login page -->
+        <input onclick="window.location.href='index.html';" type="button" value="Register" id="submit">
+        <p>Already have an account? <a href="index.html">Login Here</a></p> <!-- Link to Login Page -->
+    </form>
+    <script src="./auth.js" type="text/javascript"></script>
+</body>
+</html>

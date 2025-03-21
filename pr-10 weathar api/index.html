@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(./img/weather-xqhs9axpy8btfd3y.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .weather-container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            background-color: #87cefa; /* Light SkyBlue */
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            width: 80%;
+            background-color: #f0f8ff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4caf50;
+            background-color: #fff;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 85%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #weather-result {
+            margin-top: 25px;
+            display: none;
+        }
+
+        #city-name {
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        #temperature {
+            font-size: 24px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        #description {
+            font-size: 18px;
+            font-style: italic;
+            color: #fff;
+        }
+
+        #weather-icon {
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
+        }
+
+        .loading {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .error {
+            color: red;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 400px) {
+            .weather-container {
+                width: 90%;
+            }
+
+            input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h1>Weather App</h1>
+        <input type="text" id="city" placeholder="Enter City" />
+        <button onclick="fetchWeatherData()">Get Weather</button>
+        <div id="weather-result">
+            <h2 id="city-name"></h2>
+            <img id="weather-icon" src="" alt="weather-icon">
+            <p id="temperature"></p>
+            <p id="description"></p>
+        </div>
+        <div id="loading" class="loading" style="display: none;">Loading...</div>
+        <div id="error-message" class="error" style="display: none;"></div>
+    </div>
+
+    <script>
+        const API_KEY = '14951c93f3d11e8ac8bed96dd90e8bc7'; // Replace with your OpenWeatherMap API key
+
+        // Function to fetch weather data
+        async function fetchWeatherData() {
+            const city = document.getElementById('city').value;
+            const loadingElement = document.getElementById('loading');
+            const errorMessage = document.getElementById('error-message');
+            const weatherResult = document.getElementById('weather-result');
+            const cityNameElement = document.getElementById('city-name');
+            const weatherIconElement = document.getElementById('weather-icon');
+            const temperatureElement = document.getElementById('temperature');
+            const descriptionElement = document.getElementById('description');
+
+            // Clear previous data
+            weatherResult.style.display = 'none';
+            loadingElement.style.display = 'none';
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+
+            if (!city) {
+                alert('Please enter a city');
+                return;
+            }
+
+            loadingElement.style.display = 'block';
+
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Weather data not found');
+                }
+
+                const data = await response.json();
+
+                // Extract data from the response
+                const cityName = data.name;
+                const temperature = data.main.temp;
+                const description = data.weather[0].description;
+                const iconCode = data.weather[0].icon; // Get the icon code
+
+                // Construct the URL for the icon
+                const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+                // Display the data on the page
+                cityNameElement.innerText = cityName;
+                weatherIconElement.src = iconUrl;
+                temperatureElement.innerText = `Temperature: ${temperature}°C`;
+                descriptionElement.innerText = `Condition: ${description}`;
+                weatherResult.style.display = 'block';
+
+            } catch (error) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'City not found or invalid input.';
+            } finally {
+                loadingElement.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

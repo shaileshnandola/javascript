@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="" class="form">
+        <h1>Login</h1>
+        <input type="email" name="email" class="box" placeholder="Enter email" required>
+        <input type="password" name="password" class="box" placeholder="Enter password" required>
+        <!-- Redirect to the product page after clicking the Login button -->
+        <input onclick="redirectToProductPage()" type="button" value="Login" id="submit">
+        <p>Don't have an account? <a href="ragister.html">Register Here</a></p> <!-- Link to Registration Page -->
+        <a href="./ragister.html">Sign up</a>
+    </form>
+
+    <script>
+        function redirectToProductPage() {
+            window.location.href = "product.html"; 
+        }
+    </script>
+</body>
+</html>
