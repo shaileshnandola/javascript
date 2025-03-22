@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD App with Duplicate Check</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Arial', sans-serif;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.25rem;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .form-control,
+        .btn {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table tbody tr td button {
+            width: 80px;
+        }
+
+        .actions-btns {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>JavaScript Simple CRUD</h2>
+            </div>
+            <div class="card-body">
+                <!-- Add New Name Section -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Enter Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                </div>
+                <button onclick="adddata()" class="btn btn-primary w-100" id="addBtn">Add Name</button>
+            </div>
+        </div>
+
+        <!-- Names List -->
+        <div class="mt-5">
+            <h3 class="text-center">Names List</h3>
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="namesList"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let arrname = localStorage.getItem("arrname") ? JSON.parse(localStorage.getItem("arrname")) : [];
+
+        const adddata = () => {
+            let name = document.getElementById('name').value;
+            if (name === "") {
+                alert("Please enter a valid name.");
+                return;
+            }
+
+            // Check for duplicates
+            if (arrname.some(item => item.name === name)) {
+                alert("This name already exists!");
+                return;
+            }
+
+            arrname.push({ name: name });
+            localStorage.setItem('arrname', JSON.stringify(arrname));
+
+            document.getElementById('name').value = "";
+            showdata();
+        };
+
+        const showdata = () => {
+            let tbl = "";
+            arrname.map((val, index) => {
+                tbl += `
+                <tr>
+                    <td>${val.name}</td>
+                    <td class="actions-btns">
+                        <button class="btn btn-warning btn-sm" onclick="editName(${index})">Edit</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteName(${index})">Delete</button>
+                    </td>
+                </tr>
+                `;
+            });
+            document.getElementById("namesList").innerHTML = tbl;
+        };
+
+        const deleteName = (index) => {
+            arrname.splice(index, 1);
+            localStorage.setItem('arrname', JSON.stringify(arrname));
+            showdata();
+        };
+
+        const editName = (index) => {
+            const newName = prompt("Edit the name:", arrname[index].name);
+
+            if (newName && newName !== arrname[index].name && !arrname.some(item => item.name === newName)) {
+                arrname[index].name = newName;
+                localStorage.setItem('arrname', JSON.stringify(arrname));
+                showdata();
+            } else {
+                alert("This name is the same or already exists.");
+            }
+        };
+
+        showdata();
+    </script>
+</body>
+
+</html>
